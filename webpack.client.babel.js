@@ -14,7 +14,7 @@ module.exports = {
 
   output: {
     path: 'dist/public',
-    filename: '[name].[hash].js',
+    filename: '[name].js',
     publicPath: '/',
   },
 
@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpe?g|gif|woff2?|otf|ttf|eot)$/,
-        loaders: ['url-loader?limit=8192'],
+        loaders: ['url-loader?limit=10000&name=static/[hash].[ext]'],
       },
     ],
   },
