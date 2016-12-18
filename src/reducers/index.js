@@ -11,11 +11,9 @@ const reducers = keys.reduce((memo, key) => {
   return memo;
 }, {});
 
-const createRootReducer = () => {
-  return combineReducers({
-    ...reducers,
-    routing: routerReducer,
-  });
-};
+const rootReducer = combineReducers({
+  ...reducers,
+  routing: routerReducer,
+});
 
-export default createRootReducer;
+export default rootReducer;
