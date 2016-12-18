@@ -23,6 +23,7 @@ const render = () => {
   );
 };
 
+// eslint-disable-next-line
 if (__DEVELOPMENT__ && module.hot) {
   module.hot.accept('../routes', () => {
     render();
