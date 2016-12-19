@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 import '../stylesheets/core.scss';
 
-const initialState = {};
+const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initialState);
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -17,7 +17,10 @@ const render = () => {
 
   ReactDOM.render(
     (<Provider store={store}>
-      {createRoutes(history)}
+      { createRoutes({
+        history,
+        key: Math.random()
+      }) }
     </Provider>),
     document.getElementById('app')
   );

@@ -1,6 +1,4 @@
 export default {
-  getProfile : (username) => {
-    return fetch(`https://api.github.com/users/${username}`)
-    .then(response => response.json());
-  },
+  getProfile : (username) =>  fetch(`https://api.github.com/users/${username}`)
+    .then(response => response.json()),
 };

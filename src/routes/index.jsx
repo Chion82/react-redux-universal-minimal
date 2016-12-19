@@ -1,10 +1,12 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
 import IndexContainer from '../containers/IndexContainer';
+import ZenContainer from '../containers/ZenContainer';
 
-const createRoutes = (history) => (
-  <Router history={history} key={Math.random()}>
+const createRoutes = (props) => (
+  <Router {...props}>
     <Route path="/" component={IndexContainer} />
+    <Route path="/zen" component={ZenContainer} />
   </Router>
 );
 

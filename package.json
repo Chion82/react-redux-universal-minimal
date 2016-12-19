@@ -2,18 +2,27 @@
   "name": "react-redux-universal-minimal",
   "version": "0.0.1",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config webpack.client.babel.js",
-    "build": "npm run clean && NODE_ENV=production webpack --config webpack.client.babel.js",
+    "start:client": "NODE_ENV=development webpack-dev-server --config webpack.client.babel.js",
+    "start:server": "NODE_ENV=development webpack --config webpack.server.babel.js && NODE_ENV=development node dist/server/index.js",
+    "start": "npm run start:server",
+    "build:client": "NODE_ENV=production webpack --config webpack.client.babel.js",
+    "build:server": "NODE_ENV=production webpack --config webpack.server.babel.js",
+    "build": "npm run build:client && npm run build:server",
     "lint": "eslint --ext .js --ext .jsx .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "clean": "rimraf coverage dist",
-    "deploy": "npm run clean && npm run lint && npm run test && npm run build"
+    "deploy": "npm run clean && npm run lint && npm run test && npm run build",
+    "server": "npm run build && NODE_ENV=production node dist/server/index.js"
   },
   "author": "Chion Tang",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.14.0",
+    "history": "^4.5.0",
+    "isomorphic-fetch": "^2.2.1",
+    "morgan": "^1.7.0",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -25,7 +34,6 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^1.16.2",
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.8",
@@ -44,11 +52,14 @@
     "jest": "^17.0.3",
     "node-sass": "^3.13.0",
     "normalize.css": "^5.0.0",
+    "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "whatwg-fetch": "^2.0.1",
-    "rimraf": "^2.5.4"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.2",
+    "whatwg-fetch": "^2.0.1"
   }
 }
