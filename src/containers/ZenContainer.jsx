@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchZen } from '../actions/zen';
 import { Link } from 'react-router';
+import { WAIT_FOR_ACTION } from '../store/actionPromiseMiddleware';
 
 class ZenContainer extends Component {
 
@@ -15,7 +15,10 @@ class ZenContainer extends Component {
   }
 
   static fetchData(dispatch) {
-    return dispatch(fetchZen());
+    return dispatch({
+      type: 'zen/get',
+      [WAIT_FOR_ACTION]: 'zen/get/success',
+    });
   }
 
   componentDidMount() {

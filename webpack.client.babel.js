@@ -7,6 +7,7 @@ const __DEVELOPMENT__ = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     app : [
+      'babel-polyfill',
       'whatwg-fetch',
       './src/client/index.jsx',
     ]

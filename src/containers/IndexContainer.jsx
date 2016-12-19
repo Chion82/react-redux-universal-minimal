@@ -2,8 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import ReduxLogo from '../static/ReduxLogo.svg';
 import Profile from '../components/Profile';
-import { fetchProfile } from '../actions/profile';
 import { Link } from 'react-router';
+import { WAIT_FOR_ACTION } from '../store/actionPromiseMiddleware';
 
 const style = {
   container: {
@@ -23,7 +23,10 @@ const style = {
 class IndexContainer extends Component {
 
   static fetchData(dispatch) {
-    return dispatch(fetchProfile());
+    return dispatch({
+      type: 'profile/get',
+      [WAIT_FOR_ACTION]: 'profile/get/success',
+    });
   }
 
   static propTypes = {
@@ -40,7 +43,7 @@ class IndexContainer extends Component {
   }
 
   handleRefresh() {
-    this.props.dispatch(fetchProfile());
+    IndexContainer.fetchData(this.props.dispatch);
   }
 
   render() {
@@ -54,7 +57,7 @@ class IndexContainer extends Component {
         <h1 style={style.headline}>
           Welcome!
         </h1>
-        <Link to="/zen">Zen</Link>  
+        <Link to="/zen">Zen</Link>
         <a href="javascript:;" onClick={() => this.handleRefresh()}>Refresh</a>
         <Profile profile={this.props.profile} />
       </div>
