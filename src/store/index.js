@@ -3,7 +3,7 @@ import rootReducer from '../reducers';
 import createSagaMiddleware from 'redux-saga';
 import SagaManager from '../sagas/SagaManager';
 import rootSaga from '../sagas';
-import actionPromiseMiddleware from './actionPromiseMiddleware';
+import reduxWaitForMiddleware from './reduxWaitForMiddleware';
 
 const configureStore = (initialState) => {
 
@@ -11,7 +11,7 @@ const configureStore = (initialState) => {
 
   let enhancer = compose(
     applyMiddleware(sagaMiddleware),
-    applyMiddleware(actionPromiseMiddleware),
+    applyMiddleware(reduxWaitForMiddleware),
     // eslint-disable-next-line
     __DEVELOPMENT__ && window.devToolsExtension ? window.devToolsExtension() : f => f,
   );

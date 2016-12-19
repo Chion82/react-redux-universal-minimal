@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReduxLogo from '../static/ReduxLogo.svg';
 import Profile from '../components/Profile';
 import { Link } from 'react-router';
-import { WAIT_FOR_ACTION } from '../store/actionPromiseMiddleware';
+import { WAIT_FOR_ACTION } from '../store/reduxWaitForMiddleware';
 
 const style = {
   container: {
