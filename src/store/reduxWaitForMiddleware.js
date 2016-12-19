@@ -7,7 +7,7 @@ export { WAIT_FOR_ACTION };
 export default store => next => action => {
 
   if (actionQueue[action.type]) {
-    actionQueue[action.type].map(resolveFunction => resolveFunction());
+    actionQueue[action.type].forEach(resolveFunction => resolveFunction());
     actionQueue[action.type] = [];
   }
 
@@ -20,7 +20,7 @@ export default store => next => action => {
     actionQueue[actionToWait] = [];
   }
 
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve) => {
     actionQueue[actionToWait].push(resolve);
   });
 
