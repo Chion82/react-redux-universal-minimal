@@ -28,7 +28,7 @@ class ZenContainer extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.zen.text}</h1>
+        <h1>{this.props.zen.zenInfo && this.props.zen.zenInfo.text}</h1>
         <Link to="/">Index</Link>
       </div>
     );

@@ -14,14 +14,14 @@ const style = {
 
 const Profile = props => (
   <div style={style.container}>
-    <img src={props.profile.avatarUrl} style={style.avatar}></img>
-    <div>ID: {props.profile.id}</div>
-    <div>User: {props.profile.login}</div>
+    <img src={props.profileInfo.avatarUrl} style={style.avatar}></img>
+    <div>ID: {props.profileInfo.id}</div>
+    <div>User: {props.profileInfo.login}</div>
   </div>
 );
 
 Profile.propTypes = {
-  profile: PropTypes.object.isRequired,
+  profileInfo: PropTypes.object.isRequired,
 };
 
 export default Profile;

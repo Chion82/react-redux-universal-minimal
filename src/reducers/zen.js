@@ -5,10 +5,14 @@ const zen = handleActions({
     return { ...state, loading: true, };
   },
   ['zen/get/success'](state, action) {
-    return { ...state, loading: false, text: action.data.text};
+    return { ...state, loading: false,
+      zenInfo: {
+        text: action.payload.text
+      },
+    };
   },
   ['zen/get/failed'](state, action) {
-    return { ...state, loading: false, error: action.error};
+    return { ...state, loading: false, error: action.error, };
   }
 }, {});
 

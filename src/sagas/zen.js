@@ -4,10 +4,10 @@ import ZenService from '../services/zen';
 
 function* fetchZen() {
   try {
-    const data = yield call(ZenService.getZen);
+    const payload = yield call(ZenService.getZen);
     yield put({
       type: 'zen/get/success',
-      data
+      payload
     });
   } catch (error) {
     yield put({

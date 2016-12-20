@@ -4,10 +4,10 @@ import ProfileService from '../services/profile';
 
 function* fetchProfile() {
   try {
-    const data = yield call(ProfileService.getProfile, 'Chion82');
+    const payload = yield call(ProfileService.getProfile, 'Chion82');
     yield put({
       type: 'profile/get/success',
-      data
+      payload
     });
   } catch (error) {
     yield put({
