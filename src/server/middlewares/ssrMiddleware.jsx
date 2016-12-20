@@ -27,9 +27,9 @@ export default function(req, res, next) {
     if (redirectLocation) {
       res.redirect(301, redirectLocation.pathname + redirectLocation.search);
     } else if (error) {
-      res.send(500, error.message);
+      res.status(500).send(error.message);
     } else if (renderProps == null) {
-      res.send(404, 'Not found');
+      res.status(404).send('Not found');
     } else {
 
       const getReduxPromise = () => {
@@ -47,9 +47,9 @@ export default function(req, res, next) {
             { <RouterContext {...renderProps}/> }
           </Provider>
         );
-        res.send(200, renderFullPage(html, initStateString));
+        res.status(200).send(renderFullPage(html, initStateString));
       }).catch((err) => {
-        res.send(500, err && err.message);
+        res.status(500).send(err && err.message);
       });
 
     }
