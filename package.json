@@ -7,7 +7,7 @@
     "start": "npm run start:server",
     "build:client": "NODE_ENV=production webpack --config webpack.client.babel.js",
     "build:server": "NODE_ENV=production webpack --config webpack.server.babel.js",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run clean && npm run build:client && npm run build:server",
     "lint": "eslint --ext .js --ext .jsx .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
@@ -19,19 +19,19 @@
   "author": "Chion Tang",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.20.0",
     "express": "^4.14.0",
     "history": "^4.5.0",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.7.0",
     "react": "^15.4.1",
-    "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
-    "redux-thunk": "^2.1.0"
+    "redux-saga": "^0.13.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -60,6 +60,7 @@
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.2",
-    "whatwg-fetch": "^2.0.1"
+    "whatwg-fetch": "^2.0.1",
+    "react-addons-test-utils": "^15.4.1"
   }
 }

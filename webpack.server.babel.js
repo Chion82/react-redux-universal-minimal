@@ -14,7 +14,10 @@ fs.readdirSync('node_modules')
 const __DEVELOPMENT__ = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: './src/server/index.js',
+  entry: [
+    'babel-polyfill',
+    './src/server/index.js'
+  ],
 
   target: 'node',
 
