@@ -49,7 +49,7 @@ export default function(req, res, next) {
         );
         res.send(200, renderFullPage(html, initStateString));
       }).catch((err) => {
-        res.send(500, err);
+        res.send(500, err && err.message);
       });
 
     }

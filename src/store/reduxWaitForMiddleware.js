@@ -1,16 +1,26 @@
 const WAIT_FOR_ACTION = Symbol('WAIT_FOR_ACTION');
 const ERROR_ACTION = Symbol('ERROR_ACTION');
 
-const actionQueue = {};
+const resolveActionQueue = {};
+const rejectActionQueue = {};
 
 export { WAIT_FOR_ACTION, ERROR_ACTION };
 
 // eslint-disable-next-line
 export default store => next => action => {
 
-  if (actionQueue[action.type]) {
-    actionQueue[action.type].forEach(resolveFunction => resolveFunction());
-    actionQueue[action.type] = [];
+  if (resolveActionQueue[action.type]) {
+    resolveActionQueue[action.type].forEach(resolveFunction =>
+      resolveFunction(action.payload || action.data || {})
+    );
+    resolveActionQueue[action.type] = [];
+  }
+
+  if (rejectActionQueue[action.type]) {
+    rejectActionQueue[action.type].forEach(rejectFunction =>
+      rejectFunction(action.error || action.err || new Error('action.error not specified.'))
+    );
+    rejectActionQueue[action.type] = [];
   }
 
   if (!action[WAIT_FOR_ACTION]) {
@@ -19,19 +29,20 @@ export default store => next => action => {
 
   const resolveAction = action[WAIT_FOR_ACTION];
   const errorAction = action[ERROR_ACTION];
-  if (!actionQueue[resolveAction]) {
-    actionQueue[resolveAction] = [];
+  
+  if (!resolveActionQueue[resolveAction]) {
+    resolveActionQueue[resolveAction] = [];
   }
 
-  if (errorAction && (!actionQueue[errorAction])) {
-    actionQueue[errorAction] = [];
+  if (errorAction && (!rejectActionQueue[errorAction])) {
+    rejectActionQueue[errorAction] = [];
   }
 
   const promise = new Promise((resolve, reject) => {
-    actionQueue[resolveAction].push(resolve);
+    resolveActionQueue[resolveAction].push(resolve);
 
     if (errorAction) {
-      actionQueue[errorAction].push(reject);
+      rejectActionQueue[errorAction].push(reject);
     }
   });
 
