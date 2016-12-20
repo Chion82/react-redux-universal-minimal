@@ -54,9 +54,9 @@ class IndexContainer extends Component {
         <h1 style={style.headline}>
           Welcome!
         </h1>
-        <Link to="/zen">Zen</Link>  
+        <Link to="/zen">Zen</Link>
         <a href="javascript:;" onClick={() => this.handleRefresh()}>Refresh</a>
-        <Profile profile={this.props.profile} />
+        <Profile profile={this.props.profile.profileInfo || {}} />
       </div>
     );
   }

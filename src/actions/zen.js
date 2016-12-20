@@ -5,9 +5,9 @@ const fetchZen = () => (dispatch) => {
     type: 'zen/get'
   });
   return ZenService.getZen()
-    .then((data) => dispatch({
+    .then((payload) => dispatch({
       type: 'zen/get/success',
-      data
+      payload
     })).catch((error) => dispatch({
       type: 'zen/get/failed',
       error

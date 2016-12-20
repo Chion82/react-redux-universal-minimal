@@ -5,9 +5,9 @@ const fetchProfile = () => (dispatch) => {
     type: 'profile/get'
   });
   return ProfileService.getProfile('Chion82')
-    .then((data) => dispatch({
+    .then((payload) => dispatch({
       type: 'profile/get/success',
-      data
+      payload
     })).catch((error) => dispatch({
       type: 'profile/get/failed',
       error
