@@ -15,10 +15,11 @@ if (__DEVELOPMENT__) {
   const clientWebpackConfig = {
     ...originalClientWebpackConfig,
     entry: {
+      ...originalClientWebpackConfig.entry,
       app: [
         'webpack-hot-middleware/client',
         ...originalClientWebpackConfig.entry.app
-      ]
+      ],
     },
     output: {
       ...originalClientWebpackConfig.output,
