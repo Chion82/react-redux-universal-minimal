@@ -1,12 +1,13 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// eslint-disable-next-line no-underscore-dangle
+// eslint-disable-next-line
 const __DEVELOPMENT__ = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
     app : [
+      'babel-polyfill',
       'whatwg-fetch',
       './src/client/index.jsx',
     ]
