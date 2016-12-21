@@ -6,7 +6,7 @@ const configureStore = (initialState) => {
   let enhancer = compose(
     applyMiddleware(thunk),
     // eslint-disable-next-line
-    __DEVELOPMENT__ && window.devToolsExtension ? window.devToolsExtension() : f => f,
+    (!__SERVER_SIDE__) &&  __DEVELOPMENT__ && window.devToolsExtension ? window.devToolsExtension() : f => f,
   );
 
   const store = createStore(rootReducer, initialState, enhancer);

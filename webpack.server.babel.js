@@ -58,7 +58,6 @@ module.exports = {
     new webpack.DefinePlugin({
       __DEVELOPMENT__,
       __SERVER_SIDE__: true,
-      window: {},
     }),
   ],
 
