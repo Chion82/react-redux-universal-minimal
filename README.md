@@ -4,7 +4,8 @@ Minimal starter kit (boilerplate) for universal React apps based on [fuglu/react
 
 What's inside
 -------------
-* react + react-router + redux + redux-saga (sagas are reused on server side)
+* react + react-router + redux + redux-saga
+* [redux-wait-for-action](https://github.com/Chion82/redux-wait-for-action) to reuse sagas on server side
 * express.js for server side rendering
 * jest + mocha for test utils (No test scripts added by default)
 * webpack configuration for both client and server side
