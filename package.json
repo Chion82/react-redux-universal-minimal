@@ -32,7 +32,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
     "redux-saga": "^0.13.0",
-    "redux-wait-for-action": "0.0.2"
+    "redux-wait-for-action": "0.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -51,8 +51,10 @@
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
     "jest": "^17.0.3",
+    "mocha": "^3.2.0",
     "node-sass": "^3.13.0",
     "normalize.css": "^5.0.0",
+    "react-addons-test-utils": "^15.4.1",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
@@ -61,7 +63,6 @@
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.2",
-    "whatwg-fetch": "^2.0.1",
-    "react-addons-test-utils": "^15.4.1"
+    "whatwg-fetch": "^2.0.1"
   }
 }
