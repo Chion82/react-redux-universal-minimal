@@ -47,6 +47,7 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       __DEVELOPMENT__,
+      __SERVER_SIDE__: false,
     }),
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
