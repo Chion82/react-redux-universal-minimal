@@ -1,5 +1,7 @@
+import { minify } from 'html-minifier';
+
 export default function renderFullPage(html, initStateString) {
-  return `
+  return minify(`
 <!DOCTYPE html>
   <html lang="en"><head>
     <meta charset="utf-8">
@@ -17,5 +19,5 @@ export default function renderFullPage(html, initStateString) {
     <script src="/app.js"></script>
   </body>
 </html>
-`.replace(/\n */g, '');
+`, { collapseWhitespace: true });
 }
