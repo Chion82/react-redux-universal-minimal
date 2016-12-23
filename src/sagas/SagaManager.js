@@ -3,6 +3,7 @@ import { fork, take, cancel } from 'redux-saga/effects';
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR';
 
 export const createAbortableSaga = (rootSaga) => {
+  // eslint-disable-next-line
   if (__DEVELOPMENT__) {
     return function* () {
       const sagaTask = yield fork(rootSaga);
