@@ -2,10 +2,10 @@
   "name": "react-redux-universal-minimal",
   "version": "0.0.1",
   "scripts": {
-    "dev:client": "NODE_ENV=development webpack-dev-server --config webpack.client.babel.js",
+    "dev:client": "npm run clean && NODE_ENV=development webpack-dev-server --config webpack.client.babel.js",
     "dev:watch_server": "NODE_ENV=development webpack --config webpack.server.babel.js --watch &",
     "dev:build_server": "NODE_ENV=development webpack --config webpack.server.babel.js",
-    "dev:server": "npm run dev:build_server && npm run dev:watch_server && NODE_ENV=development node dist/server/index.js",
+    "dev:server": "npm run clean && npm run dev:build_server && npm run dev:watch_server && NODE_ENV=development node dist/server/index.js",
     "dev": "npm run dev:server",
     "start": "npm run dev",
     "build:client": "NODE_ENV=production webpack --config webpack.client.babel.js",
@@ -35,7 +35,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
     "redux-saga": "^0.13.0",
-    "redux-wait-for-action": "0.0.4"
+    "redux-wait-for-action": "0.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
