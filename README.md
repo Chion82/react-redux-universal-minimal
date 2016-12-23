@@ -1,6 +1,6 @@
 React Redux Universal Minimal Starter Kit
 ------------
-Minimal starter kit (boilerplate) for universal React apps based on [fuglu/react-redux-boilerplate](https://github.com/fuglu/react-redux-boilerplatee).
+Minimal starter kit (boilerplate) for universal React apps based on [fuglu/react-redux-boilerplate](https://github.com/fuglu/react-redux-boilerplate).
 
 What's inside
 -------------
