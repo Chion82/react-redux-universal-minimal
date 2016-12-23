@@ -2,7 +2,7 @@ import express from 'express';
 import webpack from 'webpack';
 import morgan from 'morgan';
 import originalClientWebpackConfig from '../../webpack.client.babel.js';
-import ssrMiddleware from './middlewares/ssrMiddleware.jsx';
+import ssrMiddleware from './middleware/ssrMiddleware.jsx';
 
 const app = express();
 
