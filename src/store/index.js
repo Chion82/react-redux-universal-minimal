@@ -21,7 +21,7 @@ const configureStore = (initialState) => {
   SagaManager.startSagas(sagaMiddleware, rootSaga);
 
   // eslint-disable-next-line
-  if (__DEVELOPMENT__ && module.hot) {
+  if ((!__SERVER_SIDE__) && __DEVELOPMENT__ && module.hot) {
     module.hot.accept(
       '../reducers',
       () => {

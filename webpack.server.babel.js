@@ -65,6 +65,8 @@ module.exports = {
 
 if (__DEVELOPMENT__) {
   module.exports.devtool = 'cheap-module-eval-source-map';
+  module.exports.entry.unshift('webpack/hot/poll?1000');
+  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
 } else {
   module.exports.plugins.push(
     new webpack.optimize.OccurrenceOrderPlugin(),

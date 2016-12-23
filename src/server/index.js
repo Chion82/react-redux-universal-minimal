@@ -2,16 +2,32 @@ import express from 'express';
 import webpack from 'webpack';
 import morgan from 'morgan';
 import originalClientWebpackConfig from '../../webpack.client.babel.js';
-import ssrMiddleware from './middleware/ssrMiddleware.jsx';
+
+let ssrMiddleware = require('./middleware/ssrMiddleware.jsx').default;
 
 const app = express();
 
 app.use(morgan('combined', {}));
 
-app.use(ssrMiddleware);
-
 // eslint-disable-next-line
 if (__DEVELOPMENT__) {
+
+  if (module.hot && module.hot.accept) {
+    module.hot.accept('./middleware/ssrMiddleware.jsx', () => {
+      ssrMiddleware = require('./middleware/ssrMiddleware.jsx').default;
+    });
+  }
+
+  const ssrHotMiddleware = (req, res, next) => {
+    if (ssrMiddleware) {
+      return ssrMiddleware(req, res, next);
+    } else {
+      next();
+    }
+  };
+
+  app.use(ssrHotMiddleware);
+
   const clientWebpackConfig = {
     ...originalClientWebpackConfig,
     entry: {
@@ -35,8 +51,8 @@ if (__DEVELOPMENT__) {
     compiler, { publicPath: '/', }
   ));
   app.use(webpackHotMiddleware(compiler));
-
 } else {
+  app.use(ssrMiddleware);
   // eslint-disable-next-line
   app.use(express.static(__dirname + '/../public'));
 }

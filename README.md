@@ -10,7 +10,7 @@ What's inside
 * jest for test utils (No test scripts added by default)
 * webpack configuration for both client and server side
 * ESLint
-* hot reload for client side development
+* hot reload for both client and server side development
 
 Usage
 -----
@@ -20,11 +20,13 @@ npm install
 ```
 Development:
 ```
-npm run start
+npm run dev
+open http://localhost:3001
 ```
 Development (No server side rendering):
 ```
-npm run start:client
+npm run dev:client
+open http://localhost:3000
 ```
 Build:
 ```
