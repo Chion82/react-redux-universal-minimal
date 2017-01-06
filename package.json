@@ -36,7 +36,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
     "redux-saga": "^0.13.0",
-    "redux-wait-for-action": "0.0.5"
+    "redux-wait-for-action": "0.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
